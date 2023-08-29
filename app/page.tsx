@@ -23,6 +23,18 @@ export default function Home() {
     { title: "event 4", id: 4 },
     { title: "event 5", id: 5 },
   ]);
+
+  const [allEvents, setAllEvents] = useState<Event[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [idToDelete, setIdToDelete] = useState<number | null>(null);
+  const [newEvent, setNewEvent] = useState<Event>({
+    title: "",
+    start: "",
+    allDay: false,
+    id: 0,
+  });
+
   return (
     <>
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
