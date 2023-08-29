@@ -103,6 +103,18 @@ export default function Home() {
     });
   };
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setAllEvents([...allEvents, newEvent]);
+    setShowModal(false);
+    setNewEvent({
+      title: "",
+      start: "",
+      allDay: false,
+      id: 0,
+    });
+  }
+
   return (
     <>
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
