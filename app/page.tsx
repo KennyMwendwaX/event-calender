@@ -96,6 +96,13 @@ export default function Home() {
     setIdToDelete(null);
   }
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setNewEvent({
+      ...newEvent,
+      title: e.target.value,
+    });
+  };
+
   return (
     <>
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
