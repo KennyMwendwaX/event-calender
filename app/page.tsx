@@ -39,7 +39,7 @@ export default function Home() {
     let draggableElement = document.getElementById("draggable-element");
     if (draggableElement) {
       new Draggable(draggableElement, {
-        itemSelector: ".fc-event",
+        itemSelector: ".fc-event", // event className selector
         eventData: function (eventElement) {
           let title = eventElement.getAttribute("title");
           let id = eventElement.getAttribute("data");
@@ -49,6 +49,16 @@ export default function Home() {
       });
     }
   }, []);
+
+  function handleDateClick(arg: { date: Date; allDay: boolean }) {
+    setNewEvent({
+      ...newEvent,
+      start: arg.date,
+      allDay: arg.allDay,
+      id: new Date().getTime(),
+    });
+    setShowModal(true);
+  }
 
   return (
     <>
@@ -71,7 +81,7 @@ export default function Home() {
               droppable={true}
               selectable={true}
               selectMirror={true}
-              // dateClick={{}}
+              dateClick={handleDateClick}
               // drop={{}}
               // eventClick={{}}
             />
