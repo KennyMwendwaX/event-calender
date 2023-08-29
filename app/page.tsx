@@ -71,6 +71,11 @@ export default function Home() {
     setAllEvents([...allEvents, event]);
   }
 
+  function handleDeleteModal(data: { event: { id: string } }) {
+    setShowDeleteModal(true);
+    setIdToDelete(Number(data.event.id));
+  }
+
   return (
     <>
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
