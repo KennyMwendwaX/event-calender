@@ -9,6 +9,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon, ExclamationTriangleIcon } from "@heroicons/react/20/solid";
+import { EventSourceInput } from "@fullcalendar/core/index.js";
 
 interface Event {
   title: string;
@@ -132,15 +133,15 @@ export default function Home() {
                 center: "title",
                 right: "resourceTimelineWeek, dayGridMonth,timeGridWeek",
               }}
-              events={allEvents}
+              events={allEvents as EventSourceInput}
               nowIndicator={true}
               editable={true}
               droppable={true}
               selectable={true}
               selectMirror={true}
               dateClick={handleDateClick}
-              // drop={{}}
-              // eventClick={{}}
+              drop={(data) => addEvent(data)}
+              eventClick={(data) => handleDeleteModal(data)}
             />
           </div>
 
