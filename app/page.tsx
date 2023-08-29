@@ -60,6 +60,17 @@ export default function Home() {
     setShowModal(true);
   }
 
+  function addEvent(data: DropArg) {
+    const event = {
+      ...newEvent,
+      start: data.date.toISOString(),
+      title: data.draggedEl.innerText,
+      allDay: data.allDay,
+      id: new Date().getTime(),
+    };
+    setAllEvents([...allEvents, event]);
+  }
+
   return (
     <>
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
