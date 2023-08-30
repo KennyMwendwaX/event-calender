@@ -18,7 +18,7 @@ interface Event {
   id: number;
 }
 
-export default function Test() {
+export default function Tester() {
   const [events, setEvents] = useState([
     { title: "event 1", id: 1 },
     { title: "event 2", id: 2 },
@@ -123,7 +123,7 @@ export default function Test() {
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
         <div className="font-bold text-2xl text-gray-700">EventSync</div>
       </nav>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-between px-24 pt-8">
         <div className="grid grid-cols-10">
           <div className="col-span-8">
             <FullCalendar
