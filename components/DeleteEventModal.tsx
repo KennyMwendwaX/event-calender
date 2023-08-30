@@ -1,6 +1,20 @@
-import React from "react";
+import { Dispatch, Fragment, SetStateAction } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { ExclamationTriangleIcon } from "@heroicons/react/20/solid";
 
-export default function DeleteEventModal() {
+interface Props {
+  showDeleteModal: boolean;
+  setShowDeleteModal: Dispatch<SetStateAction<boolean>>;
+  handleDelete: () => void;
+  handleCloseModal: () => void;
+}
+
+export default function DeleteEventModal({
+  showDeleteModal,
+  setShowDeleteModal,
+  handleDelete,
+  handleCloseModal,
+}: Props) {
   return (
     <Transition.Root show={showDeleteModal} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setShowDeleteModal}>

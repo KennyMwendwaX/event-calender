@@ -1,6 +1,25 @@
-import React from "react";
+import { Dispatch, Fragment, SetStateAction } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { CheckIcon } from "@heroicons/react/20/solid";
+import { Event } from "@/app/tester/page";
 
-export default function AddEventModal() {
+interface Props {
+  showModal: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleCloseModal: () => void;
+  newEvent: Event;
+}
+
+export default function AddEventModal({
+  showModal,
+  setShowModal,
+  handleChange,
+  handleSubmit,
+  handleCloseModal,
+  newEvent,
+}: Props) {
   return (
     <Transition.Root show={showModal} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setShowModal}>

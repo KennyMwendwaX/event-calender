@@ -6,12 +6,12 @@ import interactionPlugin, {
   DropArg,
 } from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import { Fragment, useEffect, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { CheckIcon, ExclamationTriangleIcon } from "@heroicons/react/20/solid";
 import { EventSourceInput } from "@fullcalendar/core/index.js";
+import { useEffect, useState } from "react";
+import AddEventModal from "@/components/AddEventModal";
+import DeleteEventModal from "@/components/DeleteEventModal";
 
-interface Event {
+export interface Event {
   title: string;
   start: Date | string;
   allDay: boolean;
@@ -79,15 +79,15 @@ export default function Tester() {
     setIdToDelete(Number(data.event.id));
   }
 
-  function handleDelete() {
+  const handleDelete = () => {
     setAllEvents(
       allEvents.filter((event) => Number(event.id) !== Number(idToDelete))
     );
     setShowDeleteModal(false);
     setIdToDelete(null);
-  }
+  };
 
-  function handleCloseModal() {
+  const handleCloseModal = () => {
     setShowModal(false);
     setNewEvent({
       title: "",
@@ -97,7 +97,7 @@ export default function Tester() {
     });
     setShowDeleteModal(false);
     setIdToDelete(null);
-  }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setNewEvent({
@@ -106,7 +106,7 @@ export default function Tester() {
     });
   };
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setAllEvents([...allEvents, newEvent]);
     setShowModal(false);
@@ -116,7 +116,7 @@ export default function Tester() {
       allDay: false,
       id: 0,
     });
-  }
+  };
 
   return (
     <>
@@ -159,6 +159,20 @@ export default function Tester() {
             ))}
           </div>
         </div>
+        <AddEventModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          handleCloseModal={handleCloseModal}
+          newEvent={newEvent}
+        />
+        <DeleteEventModal
+          showDeleteModal={showDeleteModal}
+          setShowDeleteModal={setShowDeleteModal}
+          handleDelete={handleDelete}
+          handleCloseModal={handleCloseModal}
+        />
       </main>
     </>
   );
