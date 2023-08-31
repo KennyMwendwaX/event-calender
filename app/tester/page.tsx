@@ -128,11 +128,16 @@ export default function Tester() {
         <div className="grid grid-cols-10">
           <div className="col-span-8">
             <FullCalendar
-              plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
+              plugins={[
+                dayGridPlugin,
+                interactionPlugin,
+                timeGridPlugin,
+                listPlugin,
+              ]}
               headerToolbar={{
                 left: "prevYear,prev,next,nextYear today",
                 center: "title",
-                right: "dayGridMonth,timeGridWeek,timeGridDay,list",
+                right: "dayGridMonth,timeGridWeek,timeGridDay,listDay",
               }}
               events={allEvents as EventSourceInput}
               nowIndicator={true}
