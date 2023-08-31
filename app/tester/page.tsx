@@ -6,6 +6,7 @@ import interactionPlugin, {
   DropArg,
 } from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
+import listPlugin from "@fullcalendar/list";
 import { EventSourceInput } from "@fullcalendar/core/index.js";
 import { useEffect, useState } from "react";
 import AddEventModal from "@/components/AddEventModal";
@@ -131,7 +132,7 @@ export default function Tester() {
               headerToolbar={{
                 left: "prevYear,prev,next,nextYear today",
                 center: "title",
-                right: "dayGridMonth,timeGridWeek,timeGridDay",
+                right: "dayGridMonth,timeGridWeek,timeGridDay,list",
               }}
               events={allEvents as EventSourceInput}
               nowIndicator={true}
