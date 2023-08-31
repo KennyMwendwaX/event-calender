@@ -149,12 +149,12 @@ export default function Tester() {
             id="draggable-element"
             className="ml-8 w-full border-2 p-2 rounded-md mt-16 lg:h-1/2 bg-violet-50">
             <div className="font-bold text-lg text-center">Drag Event</div>
-            {events.map((event) => (
+            {draggableEvents.map((draggableEvent) => (
               <div
                 className="fc-event cursor-pointer border-2 p-1 m-2 w-full rounded-md ml-auto text-center bg-white"
-                title={event.title}
-                key={event.id}>
-                {event.title}
+                title={draggableEvent.title}
+                key={draggableEvent.id}>
+                {draggableEvent.title}
               </div>
             ))}
           </div>
