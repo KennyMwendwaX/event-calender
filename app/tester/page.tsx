@@ -19,7 +19,7 @@ export interface Event {
 }
 
 export default function Tester() {
-  const [events, setEvents] = useState([
+  const [draggableEvents, setDragableEvents] = useState([
     { title: "event 1", id: 1 },
     { title: "event 2", id: 2 },
     { title: "event 3", id: 3 },
@@ -121,7 +121,7 @@ export default function Tester() {
   return (
     <>
       <nav className="flex justify-between mb-12 border-b border-violet-300 p-4">
-        <div className="font-bold text-2xl text-violet-500">EventSync</div>
+        <div className="font-bold text-2xl text-violet-600">EventSync</div>
       </nav>
       <main className="flex min-h-screen flex-col items-center justify-between px-24">
         <div className="grid grid-cols-10">
@@ -129,7 +129,7 @@ export default function Tester() {
             <FullCalendar
               plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
               headerToolbar={{
-                left: "prev,next today",
+                left: "prev, next, today",
                 center: "title",
                 right: "resourceTimelineWeek, dayGridMonth,timeGridWeek",
               }}
