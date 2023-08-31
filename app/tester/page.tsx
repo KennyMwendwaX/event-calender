@@ -129,9 +129,9 @@ export default function Tester() {
             <FullCalendar
               plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
               headerToolbar={{
-                left: "prev, next, today",
+                left: "prevYear,prev,next,nextYear today",
                 center: "title",
-                right: "resourceTimelineWeek, dayGridMonth,timeGridWeek",
+                right: "dayGridMonth,timeGridWeek,timeGridDay",
               }}
               events={allEvents as EventSourceInput}
               nowIndicator={true}
@@ -148,6 +148,9 @@ export default function Tester() {
           <div
             id="draggable-element"
             className="ml-8 w-full border-2 p-2 rounded-md mt-16 lg:h-1/2 bg-violet-50">
+            <form>
+              <input type="text" name="event" className="" />
+            </form>
             <div className="font-bold text-lg text-center">Drag Event</div>
             {draggableEvents.map((draggableEvent) => (
               <div
