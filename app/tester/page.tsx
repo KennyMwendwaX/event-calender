@@ -135,7 +135,7 @@ export default function Tester() {
                 listPlugin,
               ]}
               headerToolbar={{
-                left: "prevYear,prev,next,nextYear today",
+                left: "prev,next today",
                 center: "title",
                 right: "dayGridMonth,timeGridWeek,timeGridDay,listDay",
               }}
