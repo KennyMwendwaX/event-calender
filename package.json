@@ -17,7 +17,6 @@
     "@fullcalendar/timegrid": "^6.1.8",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
-    "@syncfusion/ej2-react-calendars": "^22.2.11",
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
