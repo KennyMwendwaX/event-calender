@@ -124,65 +124,73 @@ export default function Tester() {
       <nav className="flex justify-between mb-12 border-b border-violet-300 p-4">
         <div className="font-bold text-2xl text-violet-600">EventSync</div>
       </nav>
-      <main className="flex min-h-screen flex-col items-center justify-between px-24">
-        <div className="grid grid-cols-10">
-          <div className="col-span-8">
-            <FullCalendar
-              plugins={[
-                dayGridPlugin,
-                interactionPlugin,
-                timeGridPlugin,
-                listPlugin,
-              ]}
-              headerToolbar={{
-                left: "prev,next today",
-                center: "title",
-                right: "dayGridMonth,timeGridWeek,timeGridDay,listDay",
-              }}
-              events={allEvents as EventSourceInput}
-              nowIndicator={true}
-              editable={true}
-              droppable={true}
-              selectable={true}
-              selectMirror={true}
-              dateClick={handleDateClick}
-              drop={(data) => addEvent(data)}
-              eventClick={(data) => handleDeleteModal(data)}
-            />
-          </div>
 
-          <div
-            id="draggable-element"
-            className="ml-8 w-full border-2 p-2 rounded-md mt-16 lg:h-1/2 bg-violet-50">
-            <form>
-              <input type="text" name="event" className="" />
-            </form>
-            <div className="font-bold text-lg text-center">Drag Event</div>
-            {draggableEvents.map((draggableEvent) => (
-              <div
-                className="fc-event cursor-pointer border-2 p-1 m-2 w-full rounded-md ml-auto text-center bg-white"
-                title={draggableEvent.title}
-                key={draggableEvent.id}>
-                {draggableEvent.title}
-              </div>
-            ))}
-          </div>
+      <div className="flex items-start px-24">
+        <div className="w-4/6">
+          <FullCalendar
+            plugins={[
+              dayGridPlugin,
+              interactionPlugin,
+              timeGridPlugin,
+              listPlugin,
+            ]}
+            headerToolbar={{
+              left: "prev,next today",
+              center: "title",
+              right: "dayGridMonth,timeGridWeek,timeGridDay,listDay",
+            }}
+            events={allEvents as EventSourceInput}
+            nowIndicator={true}
+            editable={true}
+            droppable={true}
+            selectable={true}
+            selectMirror={true}
+            dateClick={handleDateClick}
+            drop={(data) => addEvent(data)}
+            eventClick={(data) => handleDeleteModal(data)}
+          />
         </div>
-        <AddEventModal
-          showModal={showModal}
-          setShowModal={setShowModal}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          handleCloseModal={handleCloseModal}
-          newEvent={newEvent}
-        />
-        <DeleteEventModal
-          showDeleteModal={showDeleteModal}
-          setShowDeleteModal={setShowDeleteModal}
-          handleDelete={handleDelete}
-          handleCloseModal={handleCloseModal}
-        />
-      </main>
+
+        <div
+          id="draggable-element"
+          className="ml-8 border-2 p-2 mt-[72px] rounded-md lg:h-1/2 bg-violet-50">
+          <form className="space-y-2 mb-5">
+            <input
+              type="text"
+              name="event"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none"
+            />
+            <button
+              type="submit"
+              className="focus:outline-none text-white bg-violet-700 w-full hover:bg-violet-800 focus:ring-4 focus:ring-violet-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2">
+              Add Event
+            </button>
+          </form>
+          <div className="font-bold text-lg text-center">Drag Event</div>
+          {draggableEvents.map((draggableEvent) => (
+            <div
+              className="fc-event cursor-pointer border-2 p-1 m-2 w-full rounded-md ml-auto text-center bg-white"
+              title={draggableEvent.title}
+              key={draggableEvent.id}>
+              {draggableEvent.title}
+            </div>
+          ))}
+        </div>
+      </div>
+      <AddEventModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        handleCloseModal={handleCloseModal}
+        newEvent={newEvent}
+      />
+      <DeleteEventModal
+        showDeleteModal={showDeleteModal}
+        setShowDeleteModal={setShowDeleteModal}
+        handleDelete={handleDelete}
+        handleCloseModal={handleCloseModal}
+      />
     </>
   );
 }
