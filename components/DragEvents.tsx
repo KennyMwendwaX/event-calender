@@ -1,6 +1,5 @@
-"use client";
 import useLocalStorage from "@/hooks/useLocalStorage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface DraggableEvent {
   id: number;
@@ -9,9 +8,17 @@ export interface DraggableEvent {
 
 export default function DragEvents() {
   const [eventInput, setEventInput] = useState<string>("");
-  const [draggableEvents, setDraggableEvents] = useLocalStorage<
+  const [draggableEvents, setDraggableEvents] = useState<DraggableEvent[]>([]);
+
+  // Custom useLocalStorage hook to fetch the data
+  const [localStorageData, setLocalStorageData] = useLocalStorage<
     DraggableEvent[]
   >("draggable-events", []);
+
+  // Set the draggableEvents state with the data from localStorage
+  useEffect(() => {
+    setDraggableEvents(localStorageData);
+  }, [localStorageData]);
 
   // Function to handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
