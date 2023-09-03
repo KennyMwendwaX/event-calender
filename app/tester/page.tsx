@@ -119,7 +119,7 @@ export default function Tester() {
       </nav>
 
       <div className="flex items-start px-24">
-        <div className="w-4/6">
+        <div className="w-5/6">
           <FullCalendar
             plugins={[
               dayGridPlugin,
