@@ -1,5 +1,6 @@
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 export interface DraggableEvent {
   id: number;
@@ -7,7 +8,6 @@ export interface DraggableEvent {
 }
 
 export default function DragEvents() {
-  const [eventInput, setEventInput] = useState<string>("");
   const [draggableEvents, setDraggableEvents] = useState<DraggableEvent[]>([]);
 
   // Custom useLocalStorage hook to fetch the data
@@ -21,38 +21,30 @@ export default function DragEvents() {
     setDraggableEvents(localStorageData);
   }, [localStorageData]);
 
-  // Function to handle input change
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    // Update the state with the new input value
-    setEventInput(e.target.value);
-  };
+  const { register, handleSubmit, reset } = useForm<DraggableEvent>();
 
-  // Function to handle form submission
-  const handleEventSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (eventInput === "") return;
-
+  async function onSubmit(values: DraggableEvent) {
     const event = {
       id: new Date().getTime(),
-      title: eventInput,
+      title: values.title,
     };
     setDraggableEvents([...draggableEvents, event]);
-    // Reset the input field
 
-    setEventInput("");
-  };
+    // Reset the input field
+    reset();
+  }
+
   return (
     <>
       <div
         id="draggable-element"
         className="ml-8 border-2 p-2 mt-[72px] rounded-md lg:h-1/2 bg-violet-50">
-        <form className="space-y-2 mb-5" onSubmit={handleEventSubmit}>
+        <form className="space-y-2 mb-5" onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
-            name="event"
-            onChange={(e) => handleInputChange(e)}
+            id="title"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none"
+            {...register("title")}
           />
           <button
             type="submit"
