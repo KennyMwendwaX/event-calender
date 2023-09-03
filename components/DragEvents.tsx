@@ -5,21 +5,23 @@ import { useForm } from "react-hook-form";
 export interface DraggableEvent {
   id: number;
   title: string;
+  // start: Date | string;
+  // allDay: boolean;
 }
 
 export default function DragEvents() {
   const [draggableEvents, setDraggableEvents] = useState<DraggableEvent[]>([]);
 
-  // Custom useLocalStorage hook to fetch the data
-  const [localStorageData] = useLocalStorage<DraggableEvent[]>(
-    "draggable-events",
-    []
-  );
+  // // Custom useLocalStorage hook to fetch the data
+  // const [localStorageData] = useLocalStorage<DraggableEvent[]>(
+  //   "draggable-events",
+  //   []
+  // );
 
-  // Set the draggableEvents state with the data from localStorage
-  useEffect(() => {
-    setDraggableEvents(localStorageData);
-  }, [localStorageData]);
+  // // Set the draggableEvents state with the data from localStorage
+  // useEffect(() => {
+  //   setDraggableEvents(localStorageData);
+  // }, [localStorageData]);
 
   const { register, handleSubmit, reset } = useForm<DraggableEvent>();
 
