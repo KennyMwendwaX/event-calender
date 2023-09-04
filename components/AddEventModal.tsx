@@ -73,6 +73,7 @@ export default function AddEventModal({
                           placeholder="Title"
                         />
                       </div>
+
                       <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                         <button
                           type="submit"
