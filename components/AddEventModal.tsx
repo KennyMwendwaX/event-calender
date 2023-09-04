@@ -2,8 +2,6 @@ import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { Event } from "@/app/tester/page";
-import Datetime from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
