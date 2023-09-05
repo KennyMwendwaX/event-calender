@@ -3,8 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { Event } from "@/app/tester/page";
 import TimePicker from "react-time-picker";
-import "react-time-picker/dist/TimePicker.css";
-import "react-clock/dist/Clock.css";
+import "@/components/TimePicker.css";
 
 interface Props {
   showModal: boolean;
@@ -23,36 +22,9 @@ export default function AddEventModal({
   handleCloseModal,
   newEvent,
 }: Props) {
-  const [time, setTime] = useState<string | null>("12:00");
-
+  const [time, setTime] = useState<string | null>("12:00 AM");
   const handleTimeChange = (newTime: string | null) => {
     setTime(newTime);
-  };
-
-  const handleClockClose = () => {
-    console.log("Clock closed");
-  };
-
-  const handleClockOpen = () => {
-    console.log("Clock opened");
-  };
-
-  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-    console.log("Focused input:", event.target.name);
-  };
-
-  const handleInvalidChange = () => {
-    console.log("Invalid time");
-  };
-
-  const shouldCloseClock = ({ reason }: { reason: string }) => {
-    // You can add your logic here to control whether the clock should close
-    return reason !== "outsideAction";
-  };
-
-  const shouldOpenClock = ({ reason }: { reason: string }) => {
-    // You can add your logic here to control whether the clock should open
-    return reason !== "focus";
   };
 
   return (
@@ -108,23 +80,15 @@ export default function AddEventModal({
                           placeholder="Title"
                         />
                       </div>
-                      <div>
-                        <h2>Time Picker</h2>
+                      <div className="flex items-center space-x-3 mt-8">
+                        <div>Time Picker</div>
                         <TimePicker
                           onChange={handleTimeChange}
                           value={time}
-                          clearIcon={null}
-                          clockAriaLabel="Toggle clock"
-                          onClockClose={handleClockClose}
-                          onClockOpen={handleClockOpen}
-                          onFocus={handleFocus}
-                          onInvalidChange={handleInvalidChange}
-                          shouldCloseClock={shouldCloseClock}
-                          shouldOpenClock={shouldOpenClock}
+                          format="hh:mm a"
+                          disableClock={true}
                         />
-                        <p>Selected Time: {time}</p>
                       </div>
-
                       <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                         <button
                           type="submit"
