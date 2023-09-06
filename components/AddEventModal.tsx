@@ -1,7 +1,7 @@
 import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/20/solid";
-import { Event } from "@/app/tester/page";
+import { Event } from "@/app/page";
 
 interface Props {
   showModal: boolean;

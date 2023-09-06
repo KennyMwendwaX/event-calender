@@ -21,7 +21,7 @@ export interface Event {
   id: number;
 }
 
-export default function Tester() {
+export default function Home() {
   const [allEvents, setAllEvents] = useLocalStorage<Event[]>("events", []);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
