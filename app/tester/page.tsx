@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import AddEventModal from "@/components/AddEventModal";
 import DeleteEventModal from "@/components/DeleteEventModal";
 import DragEvents from "@/components/DragEvents";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 export interface Event {
   title: string;
@@ -21,7 +22,18 @@ export interface Event {
 }
 
 export default function Tester() {
-  const [allEvents, setAllEvents] = useState<Event[]>([]);
+  // Custom useLocalStorage hook to fetch the data
+  const [localStorageData, setLocaStorageData] = useLocalStorage<Event[]>(
+    "events",
+    []
+  );
+
+  // Set the draggableEvents state with the data from localStorage
+  useEffect(() => {
+    setAllEvents(localStorageData);
+  }, [localStorageData]);
+
+  const [allEvents, setAllEvents] = useState<Event[]>(localStorageData);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [idToDelete, setIdToDelete] = useState<number | null>(null);

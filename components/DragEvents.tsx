@@ -5,8 +5,6 @@ import { useForm } from "react-hook-form";
 export interface DraggableEvent {
   id: number;
   title: string;
-  // start: Date | string;
-  // allDay: boolean;
 }
 
 export default function DragEvents() {

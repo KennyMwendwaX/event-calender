@@ -2,8 +2,6 @@ import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { Event } from "@/app/tester/page";
-import TimePicker from "react-time-picker";
-import "@/components/TimePicker.css";
 
 interface Props {
   showModal: boolean;
@@ -22,11 +20,6 @@ export default function AddEventModal({
   handleCloseModal,
   newEvent,
 }: Props) {
-  const [time, setTime] = useState<string | null>("12:00 AM");
-  const handleTimeChange = (newTime: string | null) => {
-    setTime(newTime);
-  };
-
   return (
     <Transition.Root show={showModal} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setShowModal}>
@@ -78,15 +71,6 @@ export default function AddEventModal({
                           value={newEvent.title}
                           onChange={(e) => handleChange(e)}
                           placeholder="Title"
-                        />
-                      </div>
-                      <div className="flex items-center space-x-3 mt-8">
-                        <div>Time Picker</div>
-                        <TimePicker
-                          onChange={handleTimeChange}
-                          value={time}
-                          format="hh:mm a"
-                          disableClock={true}
                         />
                       </div>
                       <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
