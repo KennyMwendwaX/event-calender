@@ -116,11 +116,11 @@ export default function Tester() {
 
   return (
     <>
-      <nav className="flex justify-between mb-12 border-b border-violet-300 p-4">
+      <nav className="fixed left-0 top-0 z-50 w-full bg-gray-200 px-2 py-2.5 sm:px-4">
         <div className="font-bold text-2xl text-violet-600">EventSync</div>
       </nav>
 
-      <div className="flex items-start px-24">
+      <div className="flex items-start py-20 px-24">
         <div className="w-5/6">
           <FullCalendar
             plugins={[
