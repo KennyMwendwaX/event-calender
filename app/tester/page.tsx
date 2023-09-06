@@ -22,18 +22,7 @@ export interface Event {
 }
 
 export default function Tester() {
-  // Custom useLocalStorage hook to fetch the data
-  const [localStorageData, setLocaStorageData] = useLocalStorage<Event[]>(
-    "events",
-    []
-  );
-
-  // Set the draggableEvents state with the data from localStorage
-  useEffect(() => {
-    setAllEvents(localStorageData);
-  }, [localStorageData]);
-
-  const [allEvents, setAllEvents] = useState<Event[]>(localStorageData);
+  const [allEvents, setAllEvents] = useLocalStorage<Event[]>("events", []);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [idToDelete, setIdToDelete] = useState<number | null>(null);
@@ -77,6 +66,7 @@ export default function Tester() {
       allDay: data.allDay,
       id: new Date().getTime(),
     };
+    // Update both allEvents and local storage data
     setAllEvents([...allEvents, event]);
   }
 
