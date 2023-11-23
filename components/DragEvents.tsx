@@ -27,12 +27,12 @@ export default function DragEvents() {
     <>
       <div
         id="draggable-element"
-        className="ml-8 border-2 p-2 mt-[72px] rounded-md lg:h-1/2 bg-violet-50">
+        className="ml-14 border-2 p-2 mt-[72px] rounded-xl lg:h-1/2 bg-violet-50">
         <form className="space-y-2 mb-5" onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
             id="title"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none"
             {...register("title")}
           />
           <button
