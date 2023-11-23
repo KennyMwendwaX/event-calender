@@ -13,6 +13,9 @@ import AddEventModal from "@/components/AddEventModal";
 import DeleteEventModal from "@/components/DeleteEventModal";
 import DragEvents from "@/components/DragEvents";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import Link from "next/link";
+import Image from "next/image";
+import Logo from "@/app/logo.png";
 
 export interface Event {
   title: string;
@@ -116,8 +119,17 @@ export default function Home() {
 
   return (
     <>
-      <nav className="fixed left-0 top-0 z-50 w-full bg-gray-200 px-2 py-2.5 sm:px-4">
-        <div className="font-bold text-2xl text-violet-600">EventSync</div>
+      <nav className="fixed left-0 top-0 z-50 w-full bg-slate-800 px-2 py-2 sm:px-4">
+        <div className="flex flex-wrap items-center justify-between mx-auto px-6 ">
+          <div className="flex items-center space-x-8">
+            <Link className="flex items-center" href="/">
+              <Image src={Logo} width={40} height={40} alt="logo" />
+              <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
+                EventSync
+              </span>
+            </Link>
+          </div>
+        </div>
       </nav>
 
       <div className="flex items-start py-20 px-24">
